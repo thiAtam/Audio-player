@@ -2,6 +2,7 @@ const nowPlay = document.querySelector('.now-playing');
 const trackArt = document.querySelector('.track-art');
 const trackName = document.querySelector('.track-name');
 const trackArtist = document.querySelector('.track-artist');
+const repeatTrack = document.querySelector('.repeat-track');
 
 const playButton = document.querySelector('.playpause-track');
 const nextButton = document.querySelector('.next-track');
@@ -96,9 +97,10 @@ function reset() {
     seekSlider.value = 0;
 }
 
-function randomTrack() {
+function randomTrick() {
     isRandom ? pauseRandom() : playRandom();
 }
+console.log(randomTrick())
 
 function playRandom() {
     isRandom = true;
@@ -110,7 +112,7 @@ function pauseRandom() {
     randomIcon.classList.remove('random-active');
 }
 
-function repeatTrack() {
+function repeatTrick() {
     let currIndex = indexTrack;
     loadTracks(currIndex);
     playTrack();
@@ -118,12 +120,14 @@ function repeatTrack() {
 
 function playPauseTrack () {
    let i = isPlaying ? playTrack : pauseTrack;
-   return i
+   return i;
 }
 
 function playTrack () {
+    let test = new Audio();
+    test.src = musicList[indexTrack].music;
      isPlaying = true;
-    currentTrack.play();
+  //  currentTrack.play();
     currentTrack.currentTime = 0;
     trackArt.classList.add('rotate');
     wave.classList.add('stroke');
@@ -132,15 +136,26 @@ function playTrack () {
     loadTracks();
     }
 
+    playButton.addEventListener('click', ()=>{
+        if(isPlaying === false) {
+            playTrack();
+            currentTrack.play();
+        } else if(isPlaying === true){
+            pauseTrack();
+            testButton.classList.toggle('active');
+            imgButton.classList.toggle('hidden');
+          //  currentTrack.pause();
+           // playPauseTrack();
+        }
+    })
+
 function pauseTrack() {
-    if(isPlaying == false) {
-        currentTrack.pause();
-        isPlaying = false;
-    }
+    isPlaying = false;
+    currentTrack.pause();
     trackArt.classList.remove('rotate');
     wave.classList.remove('stroke');
-    testButton.classList.remove('active');
-    imgButton.classList.remove('hidden'); 
+   // testButton.classList.remove('active');
+   // imgButton.classList.remove('hidden'); 
 }
 
 
@@ -204,8 +219,10 @@ function setUpdate() {
     currentTime.textContent = currentMinutes + ':' + currentSeconds;
     totalDuration.textContent = durationMinutes + ':' + durationSeconds;
 }
-playButton.addEventListener('click', playTrack)
+
 nextButton.addEventListener('click', nextTrack);
 prevButton.addEventListener('click', prevTrack);
-//currentTrack.addEventListener('ended', nextTrack);
+//playButton.addEventListener('click', playPauseTrack)
+currentTrack.addEventListener('ended', nextTrack);
 randomBgColor();
+repeatTrack.addEventListener('click',repeatTrick)
