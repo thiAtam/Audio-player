@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <script type="module" src="script.js" defer></script>
+    <link rel="shortcut icon" href="#" type="image/x-icon">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+   <div class="player">
+       <div class="wrapper">
+           <div class="details">
+               <div class="now-playing">PLAYING x OF y</div>
+               <div class="track-art"></div>
+               <div class="track-name">Track Name</div>
+               <div class="track-artist">Track Artist</div>
+           </div>
+
+           <div class="slider_container">
+               <div class="current-time">00:00</div>
+                <input type="range" min="1" max="100" value="0" class="seek_slider"">
+                <div class="total-duration">00:00</div>
+           </div>
+
+           <div class="slider_container">
+               <i class="volume-down"></i>
+                <input type="range" min="1" max="100" value="99" class="volume_slider" ">
+                <i class="volume-up"></i>
+           </div>
+
+           <div class="buttons">
+               <div class="random-track"">
+                <img class="random" src="./icons/random.svg" alt="#">
+               </div>
+
+               <div class="prev-track"">
+                <img class="left" src="./icons/left.svg" alt="#">
+                </div>
+                <div class="playpause-track"">
+                    <img class="play" src="./icons/play.svg" alt="">
+                </div>
+                <div class="next-track"">
+                    <img class="right" src="./icons/right.svg" alt="">
+                </div>
+                <div class="repeat-track"">
+                    <img class="repeat" src="./icons/restart.svg" alt="">
+                </div>
+           </div>
+
+            <div id="wave">
+                <span class="stroke"></span>
+                <span class="stroke"></span>
+                <span class="stroke"></span>
+                <span class="stroke"></span>
+                <span class="stroke"></span>
+                <span class="stroke"></span>
+                <span class="stroke"></span>
+            </div>  
+       </div>
+   </div>
+</body>
+</html>
